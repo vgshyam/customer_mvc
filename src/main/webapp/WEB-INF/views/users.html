@@ -1,0 +1,52 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Users</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="row">
+		<div class="col-md-12 bg-light text-right">
+			<button type="button" class="btn"><a href="./"> Home </a></button>
+			<button type="button" class="btn ml-2"><a href="signup"> Sign Up</a></button>
+			<button type="button" class="btn ml-2"><a href="signin"> Sign In</a></button>
+		</div>
+	</div>
+
+	<div class="container-fluid h-100">
+		<div class="row justify-content-center">
+			<div class="col col-sm-6 col-md-6 col-lg-9 col-xl-10">
+				<table class="table table-striped">
+					<thead>
+						<td>User Id</td>
+						<td>Name</td>
+						<td>Mail</td>
+						<td>Mobile No</td>
+						<td>City</td>
+						<td>Operation</td>
+					</thead>
+					<tbody>
+						<tr th:each="customer: ${customers}">
+							<td th:text="${customer.userid}"></td>
+							<td th:text="${customer.name}"></td>
+							<td th:text="${customer.mail}"></td>
+							<td th:text="${customer.mobileNo}"></td>
+							<td th:text="${customer.city}"></td>
+							<td>
+								<a th:href="@{customer/edit/}+${customer.id}">Edit</a> &nbsp;&nbsp;
+								<a th:href="@{customer/delete/}+${customer.id}">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
